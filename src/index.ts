@@ -1,5 +1,8 @@
-export function helloWorld() {
-  return "Hello World!";
-}
+import { Command } from 'commander';
+const program = new Command();
 
-console.log(helloWorld());
+program
+  .version('1.0.0')
+  .description('Project Scaffolding Tool CLI');
+
+program.parse(process.argv);
