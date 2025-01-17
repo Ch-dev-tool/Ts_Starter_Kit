@@ -7,6 +7,7 @@ import { allowedTemplates } from './shared/template.share.js';
 import { Templates } from './shared/template.type.js';
 import { ValidateArgsFacade } from './utils/facades/validateArgs.facade.js';
 import { VlidateResponse } from './shared/validate.type.js';
+import { Setup_Vue_app } from './templates/vue.template.js';
 
 const program = new Command();
 
@@ -35,10 +36,33 @@ program.command('generate <template> <projectName>')
     const projectDir:string = path.join(process.cwd(), projectName);
     console.log("Creating New Folder : ",  projectDir );
     
-    // add steps : 
-    if(appType === "Front-end" && flag==="React"){
-      const isReactSetedUp:boolean = Setup_React_app(projectName);
-      if(!isReactSetedUp) return;
+    // Add steps based on the template type and flag
+    switch (appType) {
+      case "Front-end":
+      // check for react appication : 
+      if (flag === "React") {
+        const isReactSetup: boolean = Setup_React_app(projectName);
+        if (!isReactSetup) {
+        console.error("Failed to set up React application.");
+        return;
+        }
+      }
+      // check for a react application :
+      if(flag === "Vue"){
+        // call vue Template setup :
+        const isVueSetup:boolean = Setup_Vue_app(projectName);
+        // check errors : 
+        if(!isVueSetup){
+          console.error("Failed to set up Vue application.");
+          return;
+        };
+      }
+      break;
+
+      // Add more cases here for other front-end frameworks if needed
+      default:
+      console.error(`Unsupported app type: ${appType}`);
+      return;
     }
 
     // fs.mkdirSync(projectDir, { recursive: true });
