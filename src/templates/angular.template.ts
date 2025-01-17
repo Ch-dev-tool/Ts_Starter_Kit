@@ -4,10 +4,9 @@ import path from "path";
 import { isValidProjectName } from "../utils/facades/validatePath.facade.js";
 
 
-export const setupAngularApp = (projectName: string): boolean => {
+export const Setup_Angular_app = (projectName: string): boolean => {
     try {
         console.log("Creating new Angular TypeScript application using Angular CLI integration:");
-        console.log(projectName);
 
         if (!isValidProjectName(projectName)) {
             return false;
