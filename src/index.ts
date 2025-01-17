@@ -8,6 +8,7 @@ import { Templates } from './shared/template.type.js';
 import { ValidateArgsFacade } from './utils/facades/validateArgs.facade.js';
 import { VlidateResponse } from './shared/validate.type.js';
 import { Setup_Vue_app } from './templates/vue.template.js';
+import { Setup_Angular_app } from './templates/angular.template.js';
 
 const program = new Command();
 
@@ -47,13 +48,21 @@ program.command('generate <template> <projectName>')
         return;
         }
       }
-      // check for a react application :
+      // check for a vue application :
       if(flag === "Vue"){
         // call vue Template setup :
         const isVueSetup:boolean = Setup_Vue_app(projectName);
         // check errors : 
         if(!isVueSetup){
           console.error("Failed to set up Vue application.");
+          return;
+        };
+      }
+      // check for an angular application :
+      if(flag === "Angular"){
+        const isAngularSetup:boolean = Setup_Angular_app(projectName);
+        if(!isAngularSetup){
+          console.error("Failed to set up Angular application.");
           return;
         };
       }
