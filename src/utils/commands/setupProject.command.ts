@@ -1,10 +1,8 @@
 import * as path from 'path';
 import * as fs from 'fs';
-import { Setup_React_app } from '../../templates/react.template.js';
 import { ValidateArgsFacade } from '../../utils/facades/validateArgs.facade.js';
 import { VlidateResponse } from '../../shared/validate.type.js';
-import { Setup_Vue_app } from '../../templates/vue.template.js';
-import { Setup_Angular_app } from '../../templates/angular.template.js';
+import { Setup_Front_App } from '../../templates/front.template.js';
 
 
 
@@ -31,34 +29,9 @@ export const Setup_Project = (template:string, projectName:string) => {
     // Add steps based on the template type and flag
     switch (appType) {
       case "Front-end":
-      // check for react appication : 
-      if (flag === "React") {
-        const isReactSetup: boolean = Setup_React_app(projectName);
-        if (!isReactSetup) {
-        console.error("Failed to set up React application.");
-        return;
-        }
-      }
-      // check for a vue application :
-      if(flag === "Vue"){
-        // call vue Template setup :
-        const isVueSetup:boolean = Setup_Vue_app(projectName);
-        // check errors : 
-        if(!isVueSetup){
-          console.error("Failed to set up Vue application.");
-          return;
-        };
-      }
-      // check for an angular application :
-      if(flag === "Angular"){
-        const isAngularSetup:boolean = Setup_Angular_app(projectName);
-        if(!isAngularSetup){
-          console.error("Failed to set up Angular application.");
-          return;
-        };
-      }
+        // call a setup frontEnd application :
+        Setup_Front_App(flag,projectName)
       break;
-
       // Add more cases here for other front-end frameworks if needed
       default:
       console.error(`Unsupported app type: ${appType}`);
