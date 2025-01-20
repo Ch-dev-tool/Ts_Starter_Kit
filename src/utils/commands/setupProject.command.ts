@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import { ValidateArgsFacade } from '../../utils/facades/validateArgs.facade.js';
 import { VlidateResponse } from '../../shared/validate.type.js';
 import { Setup_Front_App } from '../../templates/front.template.js';
+import { Setup_Api } from '../../templates/back.template.js';
 
 
 
@@ -28,16 +29,20 @@ export const Setup_Project = (template:string, projectName:string) => {
     
     // Add steps based on the template type and flag
     switch (appType) {
-      case "Front-end":
-        // call a setup frontEnd application :
-        Setup_Front_App(flag,projectName)
-      break;
-      // Add more cases here for other front-end frameworks if needed
-      default:
-      console.error(`Unsupported app type: ${appType}`);
-      return;
+        case "Front-end":
+            // call a setup frontEnd application :
+            Setup_Front_App(flag,projectName);
+        break;
+        case "Back-end":
+            Setup_Api(flag,projectName)
+        break;
+        // Add more cases here for other front-end frameworks if needed
+        default:
+            console.error(`Unsupported app type: ${appType}`);
+        return;
     }
-
+    
+    
     // fs.mkdirSync(projectDir, { recursive: true });
     console.log(projectDir, "Cretated successfully :) ");
 
