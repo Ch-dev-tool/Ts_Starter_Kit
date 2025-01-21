@@ -13,12 +13,7 @@ export const Setup_Nest_App = (projectName:string):boolean =>{
         console.log(projectName);
         const appName = path.basename(projectName);
         const directory:string = path.dirname(projectName);
-        // console.table(
-        //     {
-        //         appName,
-        //         directory
-        //     }
-        // );
+        
         if(!isValidProjectName(projectName)){
             return false;
         }
