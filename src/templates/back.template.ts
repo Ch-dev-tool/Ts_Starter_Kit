@@ -1,3 +1,4 @@
+import { Setup_Express_App } from "./back/express.template.js";
 import { Setup_Nest_App } from "./back/nest.template.js";
 
 
@@ -15,8 +16,13 @@ export const Setup_Api = (flag:string,projectName:string)=>{
         }
         break;
         case "Express":
+
             // call express setup command : 
-            console.log("Express setup is not supported yet");
-            break;
+            const isExpressSetup:boolean = Setup_Express_App(projectName);
+            if(!isExpressSetup){
+                console.error("Failed to setup a Express backend :( ");
+                return;
+            }   
+        break;
     }
 }
