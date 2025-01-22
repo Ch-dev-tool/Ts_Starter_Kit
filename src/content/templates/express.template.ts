@@ -14,3 +14,22 @@ export const Express_Template = `
             console.log(\`Server is running on port \${port}\`);
         });
         `;
+
+export const Express_Env_Template = `
+        # Environment
+        NODE_ENV=development
+
+        # Server
+        PORT=3000
+
+        # Database
+        DB_HOST=localhost
+        DB_PORT=5432
+        DB_USER=yourusername
+        DB_PASSWORD=yourpassword
+        DB_NAME=yourdatabase
+
+        # JWT
+        JWT_SECRET=your_jwt_secret
+        JWT_EXPIRATION=3600
+        `;
