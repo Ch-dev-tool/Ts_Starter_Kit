@@ -1,10 +1,11 @@
 import fs from "fs";
 import path from "path";
 
-
-export function CreateFileFactory(folder:string,fileName:string,content:string):void{
-    // create the file :
-    fs.writeFileSync(path.join(folder,fileName),content);
-    return;
-}
-    
+export const CreateFileFactory = (
+    directory: string, 
+    fileName: string, 
+    content: string
+): void => {
+    const filePath = path.join(directory, fileName);
+    fs.writeFileSync(filePath, content, "utf-8");
+};
