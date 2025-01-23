@@ -4,6 +4,7 @@ import { ValidateArgsFacade } from '../../utils/facades/validateArgs.facade.js';
 import { VlidateResponse } from '../../shared/validate.type.js';
 import { Setup_Front_App } from '../../templates/front.template.js';
 import { Setup_Api } from '../../templates/back.template.js';
+import { Setup_Full_App } from '../../templates/full.template.js';
 
 
 
@@ -35,6 +36,9 @@ export const Setup_Project = (template:string, projectName:string) => {
         break;
         case "Back-end":
             Setup_Api(flag,projectName)
+        break;
+        case "Full-Stack":
+            Setup_Full_App(flag,projectName);
         break;
         // Add more cases here for other front-end frameworks if needed
         default:
