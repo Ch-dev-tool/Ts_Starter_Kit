@@ -2,7 +2,6 @@ import { mkdirSync, writeFileSync } from "fs";
 import path from "path";
 import { isValidProjectName } from "../../utils/facades/validatePath.facade.js";
 import { execSync } from "child_process";
-import { Copy_TsConfig } from "../../content/tsConfig.copy.js";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { Express_Env_Template, Express_Template, indexFile_Template } from "../../content/templates/express.template.js";
@@ -41,9 +40,6 @@ export const Setup_Express_App = (projectName: string): boolean => {
             pakcagePath,
             "utf-8"
         );
-
-
-
         writeFileSync("tsconfig.json", tsConfigTemplate);
         writeFileSync("index.ts", indexFile_Template)
         writeFileSync("package.json", packageTemplate);
