@@ -25,4 +25,4 @@ export const Setup_Api = (flag:string,projectName:string)=>{
             }   
         break;
     }
-}
+};
